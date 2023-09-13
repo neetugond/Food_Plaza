@@ -1,26 +1,13 @@
 import React from "react";
 import  ReactDOM  from "react-dom/client";
 
-// React.createElement => Object => HTML(DOM)
-const h1 = React.createElement("h1", {
-    id: "title1",
-    key:"h1"
-    
-}, "Namaste React")
-
-const h2 = React.createElement("h2", {
-    id: "title2",
-    key:"h2"
-
-    
-}, "Namaste js")
-
-const div = React.createElement('div', {
-  className: "container"  
-}, h1, h2)
-
+// 2. JSX => React.createElement => Object => HTML(DOM)
+const heading = (
+    <h1 id="title" key="h1">
+        Namaste React
+    </h1>
+)
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-root.render(div)
+root.render(heading)
 
-// JSX => React.createElement => Object => HTML(DOM)
