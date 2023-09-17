@@ -1,0 +1,25 @@
+.nav-main{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+}
+
+.nav-main .logo{
+    width: 80px;
+}
+.nav-main .logo img{
+    width: 100%;
+}
+
+.searchbox{
+    margin-top: 20px;
+}
+.nav-menu{
+    display: flex;
+   
+}
+.nav-menu h3{
+margin-right: 10px;
+
+}
