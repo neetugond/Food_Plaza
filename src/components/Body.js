@@ -4,7 +4,7 @@ import React from "react";
 // const IMG_CDN_URL =
 //   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-//config driven
+//config driven ui
 const restaurantList = [
     {
         type: "restaurant",
@@ -1838,19 +1838,16 @@ const RestaurantsCard = ({
         </div>
     )
 };
+
+// no key <<<<< index key << unique key
 const Body = () => {
     return (
         <div className="restaurant-list">
-            {/* <RestaurantsCard name={restaurantList[0].data.name} cuisines={restaurantList[0].data.cuisines} />
-            <RestaurantsCard name={restaurantList[1].data.name} cuisines={restaurantList[0].data.cuisines} />  */}
-
-            {/* or */}
-
-              {/* passing data one by one is complicated what we can do we can directly spread the objet */}
-            <RestaurantsCard 
-                {...restaurantList[0].data} />
-            {/* argument */}
-            <RestaurantsCard {...restaurantList[1].data} />
+            {
+                restaurantList.map(restro => {
+                    return <RestaurantsCard{...restro.data} key={restro.data.id} />
+                })
+            }
         </div>
     )
 }
