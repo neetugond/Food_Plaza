@@ -1823,11 +1823,12 @@ const restaurantList = [
     },
 ];
 
-const RestaurantsCard = ({ restaurant }) => {
-    // props = parameter
-    // console.log("props", props)
-    // destructuring restaurant 
-    const {name, avgRating, cuisines, cloudinaryImageId} = restaurant.data
+const RestaurantsCard = ({
+    name,
+    cuisines,
+    avgRating,
+    cloudinaryImageId
+}) => {
     return (
         <div className="card">
             <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId} />
@@ -1840,9 +1841,16 @@ const RestaurantsCard = ({ restaurant }) => {
 const Body = () => {
     return (
         <div className="restaurant-list">
-            <RestaurantsCard restaurant={restaurantList[0]} />
+            {/* <RestaurantsCard name={restaurantList[0].data.name} cuisines={restaurantList[0].data.cuisines} />
+            <RestaurantsCard name={restaurantList[1].data.name} cuisines={restaurantList[0].data.cuisines} />  */}
+
+            {/* or */}
+
+              {/* passing data one by one is complicated what we can do we can directly spread the objet */}
+            <RestaurantsCard 
+                {...restaurantList[0].data} />
             {/* argument */}
-            <RestaurantsCard restaurant={restaurantList[1]} />
+            <RestaurantsCard {...restaurantList[1].data} />
         </div>
     )
 }
