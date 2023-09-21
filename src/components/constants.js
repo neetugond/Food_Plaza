@@ -1,11 +1,9 @@
-import React from "react";
-
 // Image CDN URL for Restaurant card
-// const IMG_CDN_URL =
-//   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+export const IMG_CDN_URL =
+  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
 // RestaurantList is JSON Data for displaying cards
-const restaurantList = [
+export const restaurantList = [
   {
     type: "restaurant",
     data: {
@@ -1822,27 +1820,3 @@ const restaurantList = [
     subtype: "basic",
   },
 ];
-
-const RestaurantsCard = (props) => {
-    // props = parameter
-    console.log("props", props)
-    return (
-            <div className="card">
-                <img src={ "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + props.restaurant.data?.cloudinaryImageId}/>
-                <h3>{props.restaurant.data.name}</h3>
-                <h2>{props.restaurant.data.avgRating}</h2>
-                <p>{props.restaurant.data.cuisines}</p>
-            </div>
-    )
-};
-const Body = () => {
-    return (
-        <div className="restaurant-list">
-            <RestaurantsCard restaurant={restaurantList[0]} />
-            {/* argument */}
-            <RestaurantsCard restaurant={restaurantList[1]} />
-        </div>
-    )
-}
-
-export default Body
