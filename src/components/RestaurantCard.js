@@ -11,7 +11,7 @@ const RestaurantCard = ({
 }) => {
     return (
         <div className="card">
-            <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId} />
+            <img src={IMG_CDN_URL + cloudinaryImageId} />
             <h3>{name}</h3>
             <h2>{avgRating}</h2>
             <p>{cuisines}</p>
