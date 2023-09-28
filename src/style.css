@@ -13,7 +13,9 @@
 }
 
 .searchbox{
-    margin-top: 20px;
+    margin: 1%;
+    
+    
 }
 .nav-menu{
     display: flex;
@@ -22,4 +24,30 @@
 .nav-menu h3{
 margin-right: 10px;
 
+}
+.body{
+    width: 95%;
+    margin: auto;
+}
+.restaurant-list{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    justify-content: space-around;
+}
+.card{
+    width: 300px;
+    border: 1px solid grey;
+    margin-bottom: 5%;
+}
+.card p{
+    word-wrap: break-word;
+}
+.card img{
+    width: 100%;
+
+}
+
+.searchbox{
+   margin: 1%;
 }
