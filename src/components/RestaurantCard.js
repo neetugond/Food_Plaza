@@ -14,7 +14,7 @@ name,cloudinaryImageId,avgRating,cuisines,costForTwo
             <h3>{name}</h3>
             <h3>{ costForTwo}</h3>
             <h2>{avgRating}</h2>
-            <p>{cuisines.join(', ')}</p>
+            <p>{cuisines.join(' ')}</p>
         </div>
     )
 };

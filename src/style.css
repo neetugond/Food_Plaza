@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 .nav-main{
     display: flex;
     justify-content: space-between;
@@ -12,11 +15,6 @@
     width: 100%;
 }
 
-.searchbox{
-    margin: 1%;
-    
-    
-}
 .nav-menu{
     display: flex;
    
@@ -25,9 +23,34 @@
 margin-right: 10px;
 
 }
-.body{
-    width: 95%;
-    margin: auto;
+
+.logo img{
+    color: white;
+}
+
+.restro-name h1{
+    margin-left: 70px;
+}
+/* .body{
+    padding: 0% 5% 0% 5%;
+   
+
+} */
+.searchbox{
+    margin: 10px 0px 5px 40px ;
+    /* border: 1px solid red; */
+}
+.searchbox input{
+    padding: 5px;
+    border-right: none;
+}
+.searchbox button{
+    border-left: none;
+}
+.searchbox button span{
+    /* margin-top: 1%; */
+    font-size: 12px;
+    padding: 4px 0px 8px ;
 }
 .restaurant-list{
     display: flex;
@@ -39,15 +62,21 @@ margin-right: 10px;
     width: 300px;
     border: 1px solid grey;
     margin-bottom: 5%;
+    background-color: black;
+    color: white;
+    margin: 1%;
 }
 .card p{
     word-wrap: break-word;
+}
+.card p,.card h3, .card h2{
+    margin-left: 10px;
 }
 .card img{
     width: 100%;
 
 }
 
-.searchbox{
-   margin: 1%;
+.footer-main{
+    border-top: 1px solid grey;
 }

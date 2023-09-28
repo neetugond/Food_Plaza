@@ -36,6 +36,8 @@ const Body = () => {
         setAllRestaurants(result)
         setFilterRestaurants(result);
         console.log(result)
+        console.log('render')
+
     }
     return (
         <div className="body">
@@ -50,7 +52,7 @@ const Body = () => {
                     const data = filterData(searchText, allRestaurants)
                     //update the state - restaurants
                     setFilterRestaurants(data);
-                }}>search </button>
+                }}><span class="material-symbols-outlined">search</span></button>
             </div>
             <div className="restaurant-list">
                 {
