@@ -1,71 +1,100 @@
 import { useState, useEffect } from "react";
-import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
+import { BodyShimmer } from "./Shimmer";
+import { Api_URL } from "../constants";
 
 function filterData(searchText, restaurants) {
-    const filterData = restaurants.filter((restaurant) =>
-        restaurant?.data?.name.toLowerCase().includes(searchText.toLowerCase())
+    const resFilterData = restaurants.filter((restaurant) =>
+        restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    return filterData;
+    return resFilterData;
 }
 // no key <<<<< index key << unique key
 const Body = () => {
+    const [searchText, setSearchText] = useState(""); 
     const [allRestaurants, setAllRestaurants] = useState([])
     const [filterRestaurants, setFilterRestaurants] = useState([]);
-    const [searchText, setSearchText] = useState("") //declaring react local variable searchText. setSearchText - function to update the variable
-    
-
-    // useEffect - when we want to first render the page than api and update the page
+  
+// useEffect - when we want to first render the page than api and update the page
     useEffect(() => {
         getRestaurants();
     }, [])
 
     async function getRestaurants() {
-        const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING');
-        const json = await data.json();
-        console.log("json", json)
-         
-        const dataFirst = json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle.restaurants
+        try {
+            const response = await fetch(Api_URL);
+            const json = await response.json();
+            console.log("json", json)
 
+            // optional chaining
+            const dataFirst = json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle.restaurants
+            const dataSecond = json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle.restaurants
 
-        const dataSecond =json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle.restaurants
+            // ternary operator
+            let result = (dataFirst == undefined) ? dataSecond : dataFirst
+            // i have to mentain 2 copy all restaurant and filter restaurant
+            setAllRestaurants(result)
+            setFilterRestaurants(result);
+            console.log(result)
+            console.log('render')
 
-        // config driven ui data that why ternary operator
-        let result = (dataFirst == undefined) ? dataSecond : dataFirst
-        
-        setAllRestaurants(result)
-        setFilterRestaurants(result);
-        console.log(result)
-        console.log('render')
+            // conditional rendering
+            // if restaurant is empty = shimmer ui
+            // id restaurant has data = actual data ui
+
+            // not render component (Early return)
+            if (!allRestaurants) return null;
+
+            if (filterRestaurants?.length === 0)
+                return <h1>No Restaurant match you Filter !</h1>
+
+        } catch (err) {
+            console.log(err)
+        }
 
     }
+      // use searchData function and set condition if data is empty show error message
+  const searchData = (searchText, restaurants) => {
+    if (searchText !== "") {
+      const filteredData = filterData(searchText, restaurants);
+      setFilterRestaurants(filteredData);
+    } else {
+      setFilterRestaurants(restaurants);
+    }
+  };
+
     return (
-        <div className="body">
-            <div className="searchbox">
-                <input type="text" className='search-input' placeholder='Search'
-                    value={searchText}
-                    onChange={(e) => {
-                        setSearchText(e.target.value)
-                    }} />
-                <button className='search-btn' onClick={() => {
-                    // need to filter the data
-                    const data = filterData(searchText, allRestaurants)
-                    //update the state - restaurants
-                    setFilterRestaurants(data);
-                }}><span class="material-symbols-outlined">search</span></button>
-            </div>
-            <div className="restaurant-list">
-                {
-                    filterRestaurants.map((restaurant) => {
-                        return (<RestaurantCard resData ={restaurant?.info} key={restaurant.info.id} />
+        (allRestaurants.length === 0) ? (<BodyShimmer />) : (
+            <div className="body">
+                <div className="searchbox">
+                    <input type="text" className='search-input' placeholder='Search your favorite dish '
+                        value={searchText}
+                        onChange={(e) => {
+                            setSearchText(e.target.value)
+                        }} onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                // need to filter the data
+                                  // user click on button searchData function is called
+            searchData(searchText, allRestaurants);
+                            }
 
-                        )
-                    })
-                }
-            </div>
-        </div>
+                        }} />
+                    <span class="material-symbols-outlined">search</span>
 
+                </div>
+                <div className="restaurant-list">
+                    {(filterRestaurants?.length === 0) ? <h2>Sorry, we couldn't find any Restaurant as {searchText} </h2> :
+                        filterRestaurants.map((restaurant) => {
+                            return (<RestaurantCard resData={restaurant?.info} key={restaurant.info.id} />
+
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        )
     )
+
 }
 
 export default Body

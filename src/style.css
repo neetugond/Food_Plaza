@@ -1,11 +1,15 @@
 body{
     margin: 0;
+  
 }
 .nav-main{
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: space-between;
-    background-color: black;
-    color: white;
+    background-color: rgb(250,214,14);
+    color: black;
+    box-shadow: 1px 2px 10px  grey; 
+  /* horizontal, vertical, blur, spread, color */
 }
 
 .nav-main .logo{
@@ -21,62 +25,117 @@ body{
 }
 .nav-menu h3{
 margin-right: 10px;
+margin-top: 30px;
 
 }
 
-.logo img{
-    color: white;
-}
 
 .restro-name h1{
-    margin-left: 70px;
+    margin-left: 75px;
+    text-shadow: 1px 1px 3px  black;
 }
-/* .body{
-    padding: 0% 5% 0% 5%;
-   
+.body{
+ /* background: rgba(244, 238, 122, 0.1); */
+ width: 80%;
+ margin: auto;
+ 
+}
 
-} */
 .searchbox{
-    margin: 10px 0px 5px 40px ;
-    /* border: 1px solid red; */
+    margin: auto;
+    width: 23%;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    border: 1px solid rgb(206, 206, 206);
 }
 .searchbox input{
     padding: 5px;
-    border-right: none;
+    border-top-left-radius: 10px;
+    border: none;
+    width: 16vw;
 }
-.searchbox button{
-    border-left: none;
+.searchbox input:focus{
+   outline: none;
 }
-.searchbox button span{
-    /* margin-top: 1%; */
-    font-size: 12px;
-    padding: 4px 0px 8px ;
+.searchbox span{
+    border: none;
+    background-color: white;
+    font-size: 13px;
+    color: gray;
+    font-weight: bold;
+    padding-top: 10px;
 }
+
 .restaurant-list{
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-evenly; */
     justify-content: space-around;
 }
 .card{
-    width: 300px;
-    border: 1px solid grey;
+    width: 250px;
     margin-bottom: 5%;
-    background-color: black;
-    color: white;
     margin: 1%;
+    background-color: white;
 }
-.card p{
+.card:hover{
+    box-shadow: 1px  2px 10px   grey; 
+}
+.card > p{
+    margin: 0%;
     word-wrap: break-word;
+    color: rgb(90, 89, 89);
 }
 .card p,.card h3, .card h2{
-    margin-left: 10px;
+    margin-left: 5px;
+    margin: 6px;
 }
 .card img{
     width: 100%;
+   
 
 }
 
 .footer-main{
-    border-top: 1px solid grey;
+    box-shadow: 1px 2px 10px  grey; 
+    background-color: rgb(250,214,14);
+    margin: 0;
+    padding: 5px;
+}
+.ratingRed{
+    background-color: red;
+    color: white;
+    border-radius: 2px solid red ;
+}
+.ratinggreen{
+    background-color: green;
+    color: white;
+    border-radius: 10px solid green ;
+}
+.cardsubdiv{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(90, 89, 89);
+    font-size: 14px;
+
+}
+
+.cardsubdiv p{
+    padding: 3px;
+}
+.cardsubdiv span{
+    font-size: 16px;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .searchbox input{
+        width: 14vw;
+    }  
+}
+
+@media screen and (max-width: 600px) {
+    .searchbox input{
+        width: 12vw;
+    }  
 }

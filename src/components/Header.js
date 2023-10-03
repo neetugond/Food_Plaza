@@ -7,7 +7,7 @@ function Header() {
             {/* <h1>Header</h1> */}
             <div className='nav-main'>
                 <div className="logo">
-                    <img src="https://icon-library.com/images/food-icon-white/food-icon-white-15.jpg" alt="logo" />
+                    <img src="https://icon-library.com/images/dinner-menu-icon/dinner-menu-icon-20.jpg" alt="logo" />
                 </div>
                 <div className="restro-name">
                     <h1>Food Plaza</h1>
