@@ -127,7 +127,28 @@ margin-top: 30px;
 }
 
 
-
+.shimmer-card{
+    width: 250px;
+    height: 250px;
+    background-color: lightgrey;
+    margin: 20px;
+}
+.error-not-found{
+    margin-top: 50px;
+}
+.error-not-found h2{
+    text-align: center;
+}
+.error-404{
+    background-color: red;
+    margin: auto;
+    width: 20vw;
+    padding: 20px;
+}
+.error-404 h1{
+    text-align: center;
+    color: white;
+}
 @media screen and (max-width: 1200px) {
     .searchbox input{
         width: 14vw;
