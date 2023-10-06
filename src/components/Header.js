@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import About from './About'
+import Contact from './Contact'
 // const loggedInUser = () => {
 //     return false
 // }
@@ -18,11 +20,18 @@ function Header() {
                 </div>
 
                 <div className="nav-menu">
-                        <h3>Home</h3>
-                        <h3>about</h3>
-                        <h3>contact</h3>
-                        <h3>cart</h3>
+                    <ul>
+                        
+                        <Link to="/"><li>Home</li></Link>
+                        <Link to="/about"><li>About</li></Link>
+                        <Link to="/contact"><li>Contact</li></Link>
+                        <li>Cart</li>
+                        <li>
                         {isLoggedIn ? (<button onClick={() => setIsLoggedIn(false)}>Logout</button>) : (<button onClick={() => setIsLoggedIn(true)} >Login</button>)}
+                        </li>
+                    </ul>
+
+                    
                 </div>
             </div>
 
