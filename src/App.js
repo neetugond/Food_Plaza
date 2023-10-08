@@ -8,6 +8,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import './style.css'
 import Contact from "./components/Contact";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 
 
@@ -45,6 +46,12 @@ const appRouter = createBrowserRouter([
                 element: <Contact />
 
             },
+            {
+                //dynamic url
+                path: '/restaurant/:id',
+                element:<RestaurantMenu/>
+            }
+            
         ]
 
     },
