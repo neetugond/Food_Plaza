@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import { BodyShimmer } from "./Shimmer";
 import { Api_URL } from "../constants";
+
 
 function filterData(searchText, restaurants) {
     const resFilterData = restaurants.filter((restaurant) =>
@@ -85,7 +87,11 @@ const Body = () => {
                 <div className="restaurant-list">
                     {(filterRestaurants?.length === 0) ? <h2>Sorry, we couldn't find any Restaurant as {searchText} </h2> :
                         filterRestaurants.map((restaurant) => {
-                            return (<RestaurantCard resData={restaurant?.info} key={restaurant.info.id} />
+                            return (
+                                // link restaurant with id so that when click to perticular restaurant redirect to restaurantMenu component
+                                <Link to={'/restaurant/'+restaurant?.info?.id}key={restaurant.info.id}>
+                                    <RestaurantCard resData={restaurant?.info}  />
+                                </Link>
 
                             )
                         })
