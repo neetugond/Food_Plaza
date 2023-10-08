@@ -19,12 +19,12 @@ function Header() {
                     <h1>Food Plaza</h1>
                 </div>
 
-                <div className="nav-menu">
-                    <ul>
+                <div  className="nav-menu">
+                    <ul >
                         
-                        <Link to="/"><li>Home</li></Link>
-                        <Link to="/about"><li>About</li></Link>
-                        <Link to="/contact"><li>Contact</li></Link>
+                        <Link style={{textDecoration:'inherit'}} to="/"><li>Home</li></Link>
+                        <Link style={{textDecoration:'inherit'}} to="/about"><li>About</li></Link>
+                        <Link style={{textDecoration:'inherit'}} to="/contact"><li>Contact</li></Link>
                         <li>Cart</li>
                         <li>
                         {isLoggedIn ? (<button onClick={() => setIsLoggedIn(false)}>Logout</button>) : (<button onClick={() => setIsLoggedIn(true)} >Login</button>)}

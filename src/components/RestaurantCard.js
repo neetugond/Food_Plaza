@@ -9,10 +9,10 @@ const RestaurantCard = (props) => {
 name,cloudinaryImageId,avgRating,cuisines,costForTwo,sla,aggregatedDiscountInfoV2
     } = resData
     return (
-        <div className="card">
+        <div style={{textDecoration: 'inherit', color:'white'}} className="card">
             <img src={IMG_CDN_URL + cloudinaryImageId} />
             
-            <h3>{name}</h3>
+            <h3 style={{color:'black'}}>{name}</h3>
             <p>{cuisines.join(', ')}</p>
             <div className="cardsubdiv">
                 { avgRating < 4 ?
