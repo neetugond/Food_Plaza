@@ -1,24 +1,31 @@
-import * as React from "react";
+import { lazy, Suspense } from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import About from "./components/About";
 import Error from "./components/Error";
 import './style.css'
 import Contact from "./components/Contact";
 import Profile from "./components/ProfileFunctional";
 import RestaurantMenu from "./components/RestaurantMenu";
-
-
+import { RestaurantShimmer } from "./components/Shimmer";
+// all this is same of making different bundle we do code spliting
+// chunking
+// code splitting
+// Dynamic Bundling
+// Lazy Loading
+// On demand loading
+// dynamic import
+const About = lazy(() => import('./components/About'))
+const VegRestaurant = lazy(() => import('./components/VegRestaurant'))
 
 // 3. Functional component 
 const App = () => {
     return (
         <div>
             <Header />
-            <Outlet/>
+            <Outlet />
             <Footer />
         </div>
     )
@@ -38,12 +45,12 @@ const appRouter = createBrowserRouter([
             {
 
                 path: '/about',
-                element: <About />,
-                children:[
+                element: <Suspense fallback={<h1>Loading...</h1>}><About /></Suspense>,
+                children: [
                     {
                         path: 'profile',
-                        element: <Profile/>
-               }
+                        element: <Profile />
+                    }
                 ]
 
             },
@@ -54,12 +61,20 @@ const appRouter = createBrowserRouter([
 
             },
             {
+                path: '/veg',
+                element: <Suspense fallback={<RestaurantShimmer />}>
+                    <VegRestaurant />
+                </Suspense>
+
+
+            },
+            {
                 //dynamic  configuration 
                 path: '/restaurant/:id', //when path is this
                 element: <RestaurantMenu />
                 // show RestaurantMenu component
             }
-            
+
         ]
 
     },
