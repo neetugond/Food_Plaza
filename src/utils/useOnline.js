@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 const useOnline = () => {
     // for managing state
     const [isOnline, setIsOnline] = useState(true);
-
     // want to show only once
     useEffect(() => {
         const handleOnline = () => {

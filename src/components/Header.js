@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import About from './About'
 import Contact from './Contact'
+import useOnline from '../utils/useOnline'
 // const loggedInUser = () => {
 //     return false
 // }
 function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+const isOnline = useOnline()
     return (
         <>
             {/* <h1>Header</h1> */}
@@ -26,10 +27,13 @@ function Header() {
                         <Link style={{textDecoration:'inherit'}} to="/about"><li>About</li></Link>
                         <Link style={{textDecoration:'inherit'}} to="/contact"><li>Contact</li></Link>
                         <li>Cart</li>
-                        <li>
+                        </ul>
+                        <h1>
+                            { isOnline? '🟢' : '🔴'}
+                        
+                        </h1>
                         {isLoggedIn ? (<button onClick={() => setIsLoggedIn(false)}>Logout</button>) : (<button onClick={() => setIsLoggedIn(true)} >Login</button>)}
-                        </li>
-                    </ul>
+                   
 
                     
                 </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import { BodyShimmer } from "./Shimmer";
 import { Api_URL } from "../constants";
-import useOnline from '../utils/useOnline';
+// import useOnline from '../utils/useOnline';
 
 
 function filterData(searchText, restaurants) {
@@ -15,11 +15,11 @@ function filterData(searchText, restaurants) {
 // no key <<<<< index key << unique key
 
 const Body = () => {
-    const [searchText, setSearchText] = useState(""); 
+    const [searchText, setSearchText] = useState("");
     const [allRestaurants, setAllRestaurants] = useState([])
     const [filterRestaurants, setFilterRestaurants] = useState([]);
-  
-// useEffect - when we want to first render the page than api and update the page
+
+    // useEffect - when we want to first render the page than api and update the page
     useEffect(() => {
         getRestaurants();
     }, [])
@@ -57,20 +57,20 @@ const Body = () => {
         }
 
     }
-      // use searchData function and set condition if data is empty show error message
-  const searchData = (searchText, restaurants) => {
-    if (searchText !== "") {
-      const filteredData = filterData(searchText, restaurants);
-      setFilterRestaurants(filteredData);
-    } else {
-      setFilterRestaurants(restaurants);
-    }
+    // use searchData function and set condition if data is empty show error message
+    const searchData = (searchText, restaurants) => {
+        if (searchText !== "") {
+            const filteredData = filterData(searchText, restaurants);
+            setFilterRestaurants(filteredData);
+        } else {
+            setFilterRestaurants(restaurants);
+        }
     };
-    
-    const isOnline = useOnline();
-    if (!isOnline) {
-        return <h1>Offline, please check your internet connection!!</h1>
-    }
+
+    // const isOnline = useOnline();
+    // if (!isOnline) {
+    //     return <h1> ✅ Offline, please check your internet connection!!</h1>
+    // }
 
     return (
         (allRestaurants.length === 0) ? (<BodyShimmer />) : (
@@ -83,8 +83,8 @@ const Body = () => {
                         }} onKeyDown={(event) => {
                             if (event.key === 'Enter') {
                                 // need to filter the data
-                                  // user click on button searchData function is called
-            searchData(searchText, allRestaurants);
+                                // user click on button searchData function is called
+                                searchData(searchText, allRestaurants);
                             }
 
                         }} />
@@ -96,8 +96,8 @@ const Body = () => {
                         filterRestaurants.map((restaurant) => {
                             return (
                                 // link restaurant with id so that when click to perticular restaurant redirect to restaurantMenu component
-                                <Link to={'/restaurant/'+restaurant?.info?.id}key={restaurant.info.id}>
-                                    <RestaurantCard resData={restaurant?.info}  />
+                                <Link to={'/restaurant/' + restaurant?.info?.id} key={restaurant.info.id}>
+                                    <RestaurantCard resData={restaurant?.info} />
                                 </Link>
 
                             )
