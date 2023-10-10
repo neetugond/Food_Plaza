@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import { BodyShimmer } from "./Shimmer";
 import { Api_URL } from "../constants";
+import useOnline from '../utils/useOnline';
 
 
 function filterData(searchText, restaurants) {
@@ -12,6 +13,7 @@ function filterData(searchText, restaurants) {
     return resFilterData;
 }
 // no key <<<<< index key << unique key
+
 const Body = () => {
     const [searchText, setSearchText] = useState(""); 
     const [allRestaurants, setAllRestaurants] = useState([])
@@ -63,7 +65,12 @@ const Body = () => {
     } else {
       setFilterRestaurants(restaurants);
     }
-  };
+    };
+    
+    const isOnline = useOnline();
+    if (!isOnline) {
+        return <h1>Offline, please check your internet connection!!</h1>
+    }
 
     return (
         (allRestaurants.length === 0) ? (<BodyShimmer />) : (
