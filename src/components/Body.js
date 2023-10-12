@@ -39,7 +39,7 @@ const Body = () => {
             // i have to mentain 2 copy all restaurant and filter restaurant
             setAllRestaurants(result)
             setFilterRestaurants(result);
-            console.log(result)
+            console.log('result', result)
             console.log('render')
 
             // conditional rendering

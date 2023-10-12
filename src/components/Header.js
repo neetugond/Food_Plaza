@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import useOnline from '../utils/useOnline'
+import UserContext from '../utils/UserContext'
 // const loggedInUser = () => {
 //     return false
 // }
 function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const isOnline = useOnline()
+    const {user} = useContext(UserContext)
     return (
         <>
             {/* <h1>Header</h1> */}
@@ -16,6 +18,8 @@ function Header() {
                 </div>
                 <div className="restro-name">
                     <h1>Food Plaza</h1>
+                    <h3>{user.name}</h3>
+                    
                 </div>
 
                 <div className="nav-menu">
