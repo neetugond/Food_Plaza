@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState, useContext } from 'react'
+import { useInRouterContext, useParams } from 'react-router-dom'
 import { IMG_CDN_URL, menu_api_URL, MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY } from '../constants'
 import { RestaurantShimmer } from './Shimmer';
 
 function RestaurantMenu() {
   // {id} = useParams();
   // or
+ 
   const params = useParams();
   const { id } = params
   console.log(params) // get the id in console
-
   const [restaurant, setRestaurant] = useState(null)
   const [menu, setMenu] = useState()
 
@@ -40,6 +40,7 @@ function RestaurantMenu() {
     console.log('menuData', menuItemsData)
     setMenu(menuItemsData)
   }
+
 
   return  (!restaurant) ? <RestaurantShimmer/> :(
    

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import Header from "./components/Header";
@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import Profile from "./components/ProfileFunctional";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { RestaurantShimmer } from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 // all this is same of making different bundle we do code spliting
 // chunking
 // code splitting
@@ -22,12 +23,22 @@ const VegRestaurant = lazy(() => import('./components/VegRestaurant'))
 
 // 3. Functional component 
 const App = () => {
+    // i want data dynamically from context
+    const [user, setUser] = useState({
+        name: 'nitu gond',
+        email: 'neetu@gmail.com'
+    });
     return (
-        <div>
+        // data will be accessible in wrap component is provider
+        <UserContext.Provider value={{
+            //dummy data : dynamic data
+            user: user
+        }}>
             <Header />
             <Outlet />
             <Footer />
-        </div>
+        </UserContext.Provider>
+        
     )
 }
 const appRouter = createBrowserRouter([
