@@ -32,7 +32,8 @@ const App = () => {
         // data will be accessible in wrap component is provider
         <UserContext.Provider value={{
             //dummy data : dynamic data
-            user: user
+            user: user,
+            setUser: setUser
         }}>
             <Header />
             <Outlet />

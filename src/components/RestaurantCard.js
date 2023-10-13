@@ -28,7 +28,7 @@ name,cloudinaryImageId,avgRating,cuisines,costForTwo,sla,aggregatedDiscountInfoV
                 <p>{sla?.lastMileTravelString}</p>
                 <p>{costForTwo.toUpperCase()}</p>
                 
-        <h3>{user.name}- { user.email}</h3>
+        <h3>{user.name}{ user.email}</h3>
             </div>
             {/* <div className="discountdiv">
                 

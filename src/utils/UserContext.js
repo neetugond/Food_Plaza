@@ -7,6 +7,9 @@ const UserContext = createContext({
         email: 'dummy@gmail.com'
     }
 })
+//note: react doesn't track the name of the context, whenever we use it will give common name in our devtool component "Context.Provider" but we can change the name
+
+UserContext.displayName ="UserContext"
 
 export default UserContext;
 

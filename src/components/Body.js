@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
 import { BodyShimmer } from "./Shimmer";
 import { Api_URL } from "../constants";
 // import useOnline from '../utils/useOnline';
+import UserContext from "../utils/UserContext";
 
 
 function filterData(searchText, restaurants) {
@@ -18,7 +19,7 @@ const Body = () => {
     const [searchText, setSearchText] = useState("");
     const [allRestaurants, setAllRestaurants] = useState([])
     const [filterRestaurants, setFilterRestaurants] = useState([]);
-
+    const { user, setUser } = useContext(UserContext)
     // useEffect - when we want to first render the page than api and update the page
     useEffect(() => {
         getRestaurants();
@@ -91,6 +92,18 @@ const Body = () => {
                     <span class="material-symbols-outlined">search</span>
 
                 </div>
+                <input type="text" value={user.name} onChange={(e) => {
+                    setUser({
+                        ...user,
+                        name: e.target.value
+                    })
+                }} />
+                 <input type="email" value={user.email} onChange={(e) => {
+                    setUser({
+                        ...user,
+                        email: e.target.value
+                    })
+                }} />
                 <div className="restaurant-list">
                     {(filterRestaurants?.length === 0) ? <h2>Sorry, we couldn't find any Restaurant as {searchText} </h2> :
                         filterRestaurants.map((restaurant) => {
