@@ -76,14 +76,14 @@ const appRouter = createBrowserRouter([
                 element: <Contact />
 
             },
-            {
-                path: '/veg',
-                element: <Suspense fallback={<RestaurantShimmer />}>
-                    <VegRestaurant />
-                </Suspense>
+            // {
+            //     path: '/veg',
+            //     element: <Suspense fallback={<RestaurantShimmer />}>
+            //         <VegRestaurant />
+            //     </Suspense>
 
 
-            },
+            // },
             {
                 //dynamic  configuration 
                 path: '/restaurant/:id', //when path is this

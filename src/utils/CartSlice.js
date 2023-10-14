@@ -7,7 +7,7 @@ const CartSlice = createSlice({
     name: 'cart',
     // slice initial items state empty
     initialState: {
-        items:[]
+        items:['banana']
     },
     // reducers to modify the state
     // reducers - plural

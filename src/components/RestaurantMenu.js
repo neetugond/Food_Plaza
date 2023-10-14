@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useInRouterContext, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/CartSlice';
 import { IMG_CDN_URL, menu_api_URL, MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY } from '../constants'
 import { RestaurantShimmer } from './Shimmer';
 
@@ -40,6 +42,11 @@ function RestaurantMenu() {
     console.log('menuData', menuItemsData)
     setMenu(menuItemsData)
   }
+  // 5. redux - dispatch an action
+  const dispatch = useDispatch()
+  const handleAddItem = () => {
+    dispatch(addItem('mango'))
+  }
 
 
   return  (!restaurant) ? <RestaurantShimmer/> :(
@@ -58,6 +65,7 @@ function RestaurantMenu() {
       </div>
       <div className='menu-main-div'>
         <h1>Menu</h1>
+        <button onClick={()=>handleAddItem()}>Add Item</button>
         <ul>
           {menu?.map((item) => (
             <li key={item.id}>{item.name}</li>

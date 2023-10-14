@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector'
 import useOnline from '../utils/useOnline'
 // import UserContext from '../utils/UserContext'
 
@@ -7,6 +8,10 @@ function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const isOnline = useOnline()
     // const {user} = useContext(UserContext)
+    
+    // 4. redux- subscribe to the store with useSelector hook
+    const cartItems = useSelector(store => store.cart.items)
+    console.log("cart",cartItems)
     return (
         <>
             <div className='nav-main'>
@@ -26,7 +31,7 @@ function Header() {
                         <Link style={{ textDecoration: 'inherit' }} to="/"><li>Home</li></Link>
                         <Link style={{ textDecoration: 'inherit' }} to="/about"><li>About</li></Link>
                         <Link style={{ textDecoration: 'inherit' }} to="/contact"><li>Contact</li></Link>
-                        <li>Cart</li>
+                        <li>Cart { cartItems.length}</li>
                     </ul>
                     <p>
                         {isOnline ? '🟢' : '🔴'}
