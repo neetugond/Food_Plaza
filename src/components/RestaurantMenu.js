@@ -44,8 +44,8 @@ function RestaurantMenu() {
   }
   // 5. redux - dispatch an action
   const dispatch = useDispatch()
-  const handleAddItem = () => {
-    dispatch(addItem('mango'))
+  const handleAddItem = (item) => {
+    dispatch(addItem(item)) //action.payload == item
   }
 
 
@@ -65,11 +65,16 @@ function RestaurantMenu() {
       </div>
       <div className='menu-main-div'>
         <h1>Menu</h1>
-        <button onClick={()=>handleAddItem()}>Add Item</button>
+        
         <ul>
           {menu?.map((item) => (
-            <li key={item.id}>{item.name}</li>
+            <li key={item.id}>{item.name}
+            <button onClick={()=>handleAddItem(item)}>Add Item</button>
+            </li>
+            
+            
           ))}
+          
         </ul>
       </div>
     </div>

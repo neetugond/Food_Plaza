@@ -8,7 +8,7 @@ function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const isOnline = useOnline()
     // const {user} = useContext(UserContext)
-    
+
     // 4. redux- subscribe to the store with useSelector hook
     const cartItems = useSelector(store => store.cart.items)
     console.log("cart",cartItems)
@@ -31,7 +31,10 @@ function Header() {
                         <Link style={{ textDecoration: 'inherit' }} to="/"><li>Home</li></Link>
                         <Link style={{ textDecoration: 'inherit' }} to="/about"><li>About</li></Link>
                         <Link style={{ textDecoration: 'inherit' }} to="/contact"><li>Contact</li></Link>
+                        <Link style={{ textDecoration: 'inherit' }} to='/cart'>
                         <li>Cart { cartItems.length}</li>
+                        </Link>
+                        
                     </ul>
                     <p>
                         {isOnline ? '🟢' : '🔴'}

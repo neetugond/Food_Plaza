@@ -12,6 +12,7 @@ import Contact from "./components/Contact";
 import Profile from "./components/ProfileFunctional";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { RestaurantShimmer } from "./components/Shimmer";
+import Cart from "./components/Cart";
 // import UserContext from "./utils/UserContext";
 // all this is same of making different bundle we do code spliting
 // chunking
@@ -75,6 +76,10 @@ const appRouter = createBrowserRouter([
                 path: '/contact',
                 element: <Contact />
 
+            },
+            {
+                path: '/cart',
+                element:<Cart/>
             },
             // {
             //     path: '/veg',
