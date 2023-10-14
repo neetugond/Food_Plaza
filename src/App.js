@@ -1,6 +1,8 @@
 import { lazy, Suspense, useState } from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import { Provider } from "react-redux";
+import Store from './utils/Store'
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
@@ -10,7 +12,7 @@ import Contact from "./components/Contact";
 import Profile from "./components/ProfileFunctional";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { RestaurantShimmer } from "./components/Shimmer";
-import UserContext from "./utils/UserContext";
+// import UserContext from "./utils/UserContext";
 // all this is same of making different bundle we do code spliting
 // chunking
 // code splitting
@@ -19,27 +21,29 @@ import UserContext from "./utils/UserContext";
 // On demand loading
 // dynamic import
 const About = lazy(() => import('./components/About'))
-const VegRestaurant = lazy(() => import('./components/VegRestaurant'))
+// const VegRestaurant = lazy(() => import('./components/VegRestaurant'))
 
 // 3. Functional component 
 const App = () => {
-    // i want data dynamically from context
-    const [user, setUser] = useState({
-        name: 'nitu gond',
-        email: 'neetu@gmail.com'
-    });
+    // // i want data dynamically from context
+    // const [user, setUser] = useState({
+    //     name: 'nitu gond',
+    //     email: 'neetu@gmail.com'
+    // });
     return (
-        // data will be accessible in wrap component is provider
+        // 2 redux - wraping app with provider and pass store as a props, we want to used store now all oue app that's why
+        <Provider store={Store}>
+        {/* // data will be accessible in wrap component is provider
         <UserContext.Provider value={{
             //dummy data : dynamic data
             user: user,
             setUser: setUser
-        }}>
+        }}> */}
             <Header />
             <Outlet />
             <Footer />
-        </UserContext.Provider>
-        
+        {/* </UserContext.Provider> */}
+        </Provider>
     )
 }
 const appRouter = createBrowserRouter([
